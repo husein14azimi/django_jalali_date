@@ -11,10 +11,16 @@ IN THE NAME OF GOD
 > [!NOTE]
 > all of the logic is in the serializer of the jalali app.
 
-requirements:
-* django
-* rest framework
+### how this project works
 
+the datetime on the server is stored as `Gregorian` (DJANGO default) and the data shown to the user is in `Jalali`. this project converts this data using the library `jdatetime`.
+
+requirements:
+* DJANGO
+* REST framework
+
+
+## Preparation
 
 run:
 ```
@@ -68,7 +74,7 @@ class JalaliDateTimeField(serializers.DateTimeField):
         return None
 ```
 
-
+## Usage
 now you can use this custom serializer field anywhere in your project. suppose that we are using it in another serializer:
 
 ```
@@ -84,3 +90,11 @@ class MyModelSerializer(serializers.ModelSerializer):
 ```
 
 since the `jalali` serializer field inherits from the `serializers.DateTimeField`, you can pass the regular artuments like `read_only=True` or `source=...`
+
+
+
+
+
+
+
+
